@@ -9,16 +9,16 @@
 ##### request body
 *image
 ##### request query
-*crop `cover, contain, fill, inside or outside` `optional`
-*rotate `integer` `optional`
-*resize `boolean` `optional`
-*width `integer` `optional`
-*height `integer` `optional`
+*crop `cover, contain, fill, inside or outside` `optional`  
+*rotate `integer` `optional`  
+*resize `boolean` `optional`  
+*width `integer` `optional`  
+*height `integer` `optional`  
 
 
 
 ### *POST* `localhost:3000/export`
 ##### request body
-*type `string` `jpg, jpeg, png or pdf`
-*file `string` `file id`
+*type `string` `jpg, jpeg, png or pdf`  
+*file `string` `file id`  
 
