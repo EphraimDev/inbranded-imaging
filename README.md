@@ -7,7 +7,7 @@
 ## Endpoints
 ### POST `localhost:3000/upload`
 ##### request body
-*image
+*image `file`*  
 ##### request query
 *crop `cover, contain, fill, inside or outside` `optional`*  
 *rotate `integer` `optional`*  
