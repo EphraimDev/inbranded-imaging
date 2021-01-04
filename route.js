@@ -160,7 +160,7 @@ router.post('/export', async (req, res) => {
 						},
 						original_file: {
 							id: file,
-                            url: type == 'pdf' ? process.env.URL + '/pdf/' + file : process.env.URL + '/images/' + file,
+                            url: process.env.URL + '/images/' + file,
 						},
 					});
 				} else {
