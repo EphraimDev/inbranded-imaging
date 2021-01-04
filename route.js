@@ -6,7 +6,6 @@ const sharp = require('sharp');
 const fs = require('fs');
 const PDFDocument = require('pdfkit');
 const { validateImage } = require('./utils');
-// import image from './image';
 
 dotenv.config();
 sharp.cache(false);
@@ -14,9 +13,35 @@ const router = app.Router();
 
 router.post('/upload', async (req, res) => {
 	try {
-		// console.log(req.body)
-		// return;
-		const { resize, rotate, width, height } = req.query;
+        const { resize, rotate, width, height } = req.query;
+        if(Number.isNaN(parseInt(rotate))){
+            return res.status(400).json({
+                status: 'failed',
+                message: 'rotate must be a number',
+            });
+        }
+
+        if(Number.isNaN(parseInt(width))){
+            return res.status(400).json({
+                status: 'failed',
+                message: 'width must be a number',
+            });
+        }
+
+        if(Number.isNaN(parseInt(height))){
+            return res.status(400).json({
+                status: 'failed',
+                message: 'height must be a number',
+            });
+        }
+
+        if(Number.isNaN(parseInt(rotate))){
+            return res.status(400).json({
+                status: 'failed',
+                message: 'rotate must be a number',
+            });
+        }
+
 		const time = new Date().getTime();
 		const storage = multer.diskStorage({
 			destination: (_req, file, cb) => {
@@ -37,7 +62,11 @@ router.post('/upload', async (req, res) => {
 		const imageUpload = await upload.single('image');
 		imageUpload(req, res, async function(err) {
 			if (req.file) {
-				const crop = req.query.crop ? req.query.crop : 'cover';
+                let crop = req.query.crop;
+                
+                if(!['cover', 'contain', 'fill', 'inside', 'outside'].includes(crop)) {
+                    crop = 'cover';
+                }
 
 				if (resize == true && rotate) {
 					let buffer = await sharp(req.file.path)
@@ -155,7 +184,6 @@ router.post('/export', async (req, res) => {
 				}
 			}
 		});
-		// return res.json(req.body);
 	} catch (error) {
 		return res.status(400).json({
 			status: 'failed',
