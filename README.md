@@ -5,7 +5,7 @@
 #### run `copy .env.example .env`
 
 ## Endpoints
-### POST `localhost:3000/upload`
+### POST `localhost:3000/api/upload`
 ##### request body
 *image `file`*  
 ##### request query
@@ -17,7 +17,7 @@
 
 
 
-### *POST* `localhost:3000/export`
+### *POST* `localhost:3000/api/export`
 ##### request body
 *type `string` `jpg, jpeg, png or pdf`*  
 *file `string` `file id`*  
