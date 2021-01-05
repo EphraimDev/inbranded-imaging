@@ -4,6 +4,8 @@
 
 #### run `copy .env.example .env`
 
+#### run `npm start`
+
 ## Endpoints
 ### POST `localhost:3000/api/upload`
 ##### request body
